@@ -1,0 +1,18 @@
+body {
+    font-size: 14px;
+/*    display: flex;*/
+}
+
+#wrap{ 
+	display: flex;
+}
+
+
+
+
+#extraInfo{
+	width: 100px;
+	margin-left: 10px;
+/*	float: right;*/
+	
+}

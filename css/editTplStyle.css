@@ -1,0 +1,44 @@
+.editPanel{
+	background: #E9FCED;
+	width: 250px;
+	height: 100%;
+	vertical-align: top;
+	border-radius: 12px;
+	padding: 10px;
+}
+
+.closeEdit {
+    background-color: #E59C9C;
+	display: inline-block;
+	border-radius: 10px;
+	padding: 10px;
+	width: 65px;
+	margin-left: 110px;
+}
+
+.saveInfo {
+    background-color: #CCCCCC;    
+	display: inline-block;
+	border-radius: 10px;
+	padding: 10px;
+	width: 65px;
+}
+
+h3 {
+	margin-left: 10px;
+}
+
+.editPanel h2{
+	text-align: center;
+	color: black;
+
+}
+
+.editPanel div{
+	margin-top: 10px;
+}
+
+input{
+	width: 120px;
+	margin-left: 10px;
+}

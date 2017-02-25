@@ -1,0 +1,1 @@
+var inputTpl = `<input type="button" value=":color" class=":color">`; 

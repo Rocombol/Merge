@@ -1,0 +1,22 @@
+
+#button, #colorarea, #counterarea {
+    border: 1px solid blue;
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+input.blue, input.red, input.green{
+    width: 95%;
+    height: 100px;  
+}
+
+h3.blue, h3.red, h3.green {
+	margin-left: 15px;
+}
+
+
+#wrapper{
+	margin-top: 30px;
+}

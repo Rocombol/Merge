@@ -1,0 +1,28 @@
+.closeInfo {
+	margin-left: 190px;
+    background-color: #E59C9C;
+    height: 50px;
+    width: 50px;
+	border-radius: 5px;		
+}
+
+ul {
+    background: #E9FCED;
+    width: 250px;
+    height: 100%;
+	border: 1px solid #E9FCED;
+	border-radius: 10px;
+}
+
+li {
+    list-style-type: none;
+    line-height: 25px;
+}
+
+li span{
+	margin-left: 10px;
+}
+
+.addInfo h2 {
+	color:black;
+}
