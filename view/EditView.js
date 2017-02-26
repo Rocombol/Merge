@@ -27,7 +27,6 @@ function EditView (_student) {
 					} 
 				});								
 				deleteExtraInfo();
-				//event.preventDefault();
 				mediator.pub('infoView', student);
 		};
 		

@@ -1,9 +1,6 @@
 'use strict';
 function StudentsList () {
 		
-	Student.prototype = new Observer();
-	Student.prototype.constructor = Student; 
-			
 		var first = new Student("Alex", "Grigoryev", "Male", "answer_quick", "3805555333", "answer_quick@hmail.com", "1994-08-03"),
         	second = new Student("Svetlana", 'Ovcharenko', "Female", "sweetie", "+380663334455", "sweetie@gmail.com", "1991-05-24"),
         	third = new Student("Polina", 'Zhylyaeva', "Female", "candy_polya", "+380934445566", "candy_polya@hmail.com", "1987-07-07"),
