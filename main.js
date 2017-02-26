@@ -1,5 +1,6 @@
 'use strict';
-
+	Student.prototype = new Observer();
+	Student.prototype.constructor = Student; 
 	
 	ColorCounter.prototype = new Observer();
 	ColorCounter.prototype.constructor = ColorCounter;
