@@ -1,18 +1,22 @@
 body {
     font-size: 14px;
-/*    display: flex;*/
 }
 
-#wrap{ 
-	display: flex;
+#wrapper {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#content {
+	display: inline-block;
+	vertical-align: top;
 }
 
 
-
-
-#extraInfo{
+#extraInfo {
 	width: 100px;
+	height: 400px;
 	margin-left: 10px;
-/*	float: right;*/
-	
+	display: inline-block;
+	vertical-align: top;	
 }

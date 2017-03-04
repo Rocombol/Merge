@@ -1,23 +1,25 @@
 'use strict';
 
-function EditView (_student) {
+function EditView () {
+	
+var editDiv = document.createElement('div'),
+	saveButton, closeButton;
+					
+	this.render =  function (_student){
 			
-	mediator.sub('editView', function(_student){
-		var student = _student,
-    		extraInfo = document.getElementById('extraInfo'),
-    		editDiv = document.createElement('div'),
-			saveButton,
-			closeButton;				
-
+		var student = _student;
+			
 		editDiv.classList.add('editPanel'); 
 		
         editDiv.innerHTML = editViewTpl;
-        extraInfo.append(editDiv);		
+      
         saveButton = editDiv.querySelector('.saveInfo');
 		closeButton = editDiv.querySelector('.closeEdit'); 
 				
 		saveButton.addEventListener('click', changeData, false);
-		closeButton.addEventListener('click', deleteExtraInfo, false);
+		closeButton.addEventListener('click', this.closeInfo, false);
+		
+		return editDiv;
 
 		function changeData () {
 				var inputCollection = document.getElementsByTagName('input');					
@@ -26,16 +28,22 @@ function EditView (_student) {
 						student.set(input.name, input.value);				
 					} 
 				});								
-				deleteExtraInfo();
+				deleteExtraInfo ();
 				mediator.pub('infoView', student);
 		};
 		
 		function deleteExtraInfo () {
+			
 			saveButton.removeEventListener('click', changeData)
 			closeButton.removeEventListener('click', deleteExtraInfo)
-			extraInfo.innerHTML = '';
+			editDiv.parentNode.innerHTML='';
 		}
-	});  
-
+	};
+	
+	
+	this.closeInfo = function () {
+			editDiv.parentNode.innerHTML='';
+	};
+			
     return this;
 }

@@ -1,0 +1,22 @@
+#colorBox {
+    width: 90%;
+    height: 90%;
+	margin: 10px 10px 10px 10px;
+}
+
+.colorDiv{
+	width: inherit;
+    height: inherit;
+}
+ 
+#colorBox.blue {
+    background-color: blue;
+}
+
+#colorBox.red {
+    background-color: red;
+}
+
+#colorBox.green {
+    background-color: green;
+}

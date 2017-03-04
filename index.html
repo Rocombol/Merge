@@ -2,42 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Student List</title>
+    <title>Student List and ColorTabs</title>
     
+    <link rel="stylesheet" href="style/colortab/colorBoxView.css">
     <link rel="stylesheet" href="style/colortab/colorMain.css">
-    
+       
     <link rel="stylesheet" href="style/studentlist/infoTplStyle.css">
     <link rel="stylesheet" href="style/studentlist/listItemTplStyle.css">
     <link rel="stylesheet" href="style/studentlist/listTplStyle.css">
     <link rel="stylesheet" href="style/studentlist/editTplStyle.css">
+    
     <link rel="stylesheet" href="style/main.css">
     
-    <script src="script/appliction/studentlist/templates/editViewTpl.js"></script>
-    <script src="script/appliction/studentlist/templates/infoViewTpl.js"></script>
-    <script src="script/appliction/studentlist/templates/listItemTpl.js"></script>
-    <script src="script/appliction/studentlist/templates/listTpl.js"></script>
-       
-	<script src="script/appliction//colortabs/templates/inputTpl.js"></script>    
-    <script src="script/appliction/colortabs/templates/counterViewTpl.js"></script>  
-              
-    <script src="script/appliction/studentlist/templates/renderTemplate.js"></script>
-             
-	<script src="script/appliction/studentlist/model/Student.js"></script>
-    <script src="script/appliction/studentlist/model/StudentsList.js"></script>
-        
-    <script src="script/appliction/colortabs/model/ColorCounter.js"></script>
-               
-    <script src="script/appliction/studentlist/view/InfoView.js"></script>    
-    <script src="script/appliction/studentlist/view/ListItemView.js"></script>
-    <script src="script/appliction/studentlist/view/ListView.js"></script>
-    <script src="script/appliction/studentlist/view/EditView.js"></script>
-        
-    <script src="script/appliction/colortabs/view/ButtonView.js"></script>
-    <script src="script/appliction/colortabs/view/ColorView.js"></script>
-    <script src="script/appliction/colortabs/view/CounterView.js"></script>   
-        
     <script src="script/libs/observer.js"></script>
     <script src="script/libs/mediator.js"></script>
+    
+    <script src="script/application/studentlist/templates/editViewTpl.js"></script>
+    <script src="script/application/studentlist/templates/infoViewTpl.js"></script>
+    <script src="script/application/studentlist/templates/listItemTpl.js"></script>
+    <script src="script/application/studentlist/templates/listTpl.js"></script>
+       
+	<script src="script/application//colortabs/templates/inputTpl.js"></script>    
+    <script src="script/application/colortabs/templates/counterViewTpl.js"></script> 
+    <script src="script/application/colortabs/templates/colorViewTpl.js"></script>   
+              
+    <script src="script/application/studentlist/templates/renderTemplate.js"></script>
+             
+	<script src="script/application/studentlist/model/Student.js"></script>
+    <script src="script/application/studentlist/model/StudentsList.js"></script>
+        
+    <script src="script/application/colortabs/model/Counter.js"></script>
+               
+    <script src="script/application/studentlist/ControllerStudent.js"></script>    
+    <script src="script/application/studentlist/view/InfoView.js"></script>    
+    <script src="script/application/studentlist/view/ListItemView.js"></script>
+    <script src="script/application/studentlist/view/StudentListView.js"></script>
+    <script src="script/application/studentlist/view/EditView.js"></script>
+        
+    <script src="script/application/colortabs/ControllerColor.js"></script>
+    <script src="script/application/colortabs/view/ColorView.js"></script>
+    <script src="script/application/colortabs/view/ButtonView.js"></script>  
+    <script src="script/application/colortabs/view/CounterView.js"></script>   
+        
     <script src="script/main.js"></script>
 </head>
 	<body>
@@ -49,7 +55,6 @@
 			<div id="button"></div>
 			<div id="colorarea"></div>
 			<div id="counterarea"></div>	
-		</div>
-		
+		</div>		
 	</body>
 </html>

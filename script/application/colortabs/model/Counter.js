@@ -1,10 +1,10 @@
 'use strict';
 
-function ColorCounter () {
+function Counter () {
     var counters = {
         blue: 0,
         red: 0,
-        green: 0
+        green: 0      	
     };
 
     this.toJSON = function () {
@@ -18,12 +18,13 @@ function ColorCounter () {
         return json;
     };
 
-
 	this.increaseCount = function (color) {
         counters[color]++;
         this.trigger('change', color);
     };
-
-
+	
 	return this;
 }
+
+Counter.prototype = new Observer();
+Counter.prototype.constructor = Counter;

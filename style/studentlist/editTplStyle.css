@@ -25,7 +25,8 @@
 }
 
 h3 {
-	margin-left: 10px;
+	margin: 10px 0 0 10px;
+/*	margin-left: 10px;*/
 }
 
 .editPanel h2{

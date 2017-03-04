@@ -24,7 +24,7 @@ function Student (name, lastName, gender, skype, phone, email, birthdate) {
 		this.trigger('change');
     };	
 	
-    function getAge(birthdate) {
+    function getAge (birthdate) {
         var birthdateToDate,
             ageDifMs,
             ageDate;
@@ -34,8 +34,11 @@ function Student (name, lastName, gender, skype, phone, email, birthdate) {
         ageDate = new Date(ageDifMs);
 
         return Number(Math.abs(ageDate.getUTCFullYear() - 1970));
-    };
+    }
 
     return this;
 
-};
+}
+
+Student.prototype = new Observer();
+Student.prototype.constructor = Student; 

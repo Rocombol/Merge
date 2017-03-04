@@ -1,11 +1,11 @@
 'use strict';
 
-function ListItemView (_student, infoView) {
+function ListItemView (_student) {
 	var student = _student,
 		itemTr = document.createElement('tr'),
 		buttonFind, buttonEdit;
 			
-    this.renderItem = function () {
+    this.render = function () {
         var itemData = '',
             json = student.toJSON();
 		
@@ -28,35 +28,13 @@ function ListItemView (_student, infoView) {
 		itemTr.innerHTML = itemData;		
 		queryListeners();						         								
 	}
-		
+
 	function findMore () {  			
-			if(mediator){
-				deleteExtraInfo();
-				mediator.pub('infoView', student)
-			} else{
-				mediator.pub('infoView', student)
-			}						
-	};
-	
-	function editInfo () {                    
-			if(mediator){
-				deleteExtraInfo();
-				mediator.pub('editView', student)
-			} else{
-				deleteExtraInfo();
-			}						
-	};
-		
-	function deleteExtraInfo () {
-			var extraInfo = document.getElementById('extraInfo');
-			extraInfo.innerHTML='';
+		mediator.pub('infoView', student)				
 	}
 	
-	function queryRemoveListeners () {
-		buttonFind = itemTr.querySelector('.showInfo');
-		buttonEdit = itemTr.querySelector('.editInfo');
-        buttonFind.removeEventListener('click', findMore);
-        buttonEdit.removeEventListener('click', editInfo);				
+	function editInfo () {                    
+		mediator.pub('editView', student)							
 	}
 	
 	function queryListeners () {
@@ -64,7 +42,14 @@ function ListItemView (_student, infoView) {
 		buttonEdit = itemTr.querySelector('.editInfo');		
 		buttonFind.addEventListener('click', findMore, false);			
 		buttonEdit.addEventListener('click', editInfo, false);		
-	};
+	}	
 	
+	function queryRemoveListeners () {
+		buttonFind = itemTr.querySelector('.showInfo');
+		buttonEdit = itemTr.querySelector('.editInfo');
+        buttonFind.removeEventListener('click', findMore);
+        buttonEdit.removeEventListener('click', editInfo);				
+	}
+		
     return this;
 };
