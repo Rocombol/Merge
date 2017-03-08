@@ -13,28 +13,16 @@ function ControllerStudent () {
 	studentContainer.appendChild(studentListViewRender);
 			
 	mediator.sub('infoView', function (_student){
-		
 		infoContainer.innerHTML='';
-		
 		var info = infoView.render(_student);
-			
 		infoContainer.appendChild(info)
-		
 	});	
 	
-	
-
 	mediator.sub('editView', function (_student){
-		
-		editContainer.innerHTML='';
-		
+		editContainer.innerHTML='';		
 		var edit = editView.render(_student);
-			
 		editContainer.appendChild(edit);
-		
 	});	
-		
 	
 	return this;
-	
 };

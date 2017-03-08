@@ -5,8 +5,7 @@ function EditView () {
 var editDiv = document.createElement('div'),
 	saveButton, closeButton;
 					
-	this.render =  function (_student){
-			
+	this.render =  function (_student){		
 		var student = _student;
 			
 		editDiv.classList.add('editPanel'); 
@@ -19,8 +18,6 @@ var editDiv = document.createElement('div'),
 		saveButton.addEventListener('click', changeData, false);
 		closeButton.addEventListener('click', this.closeInfo, false);
 		
-		return editDiv;
-
 		function changeData () {
 				var inputCollection = document.getElementsByTagName('input');					
 				[].forEach.call(inputCollection, function(input){						
@@ -30,14 +27,15 @@ var editDiv = document.createElement('div'),
 				});								
 				deleteExtraInfo ();
 				mediator.pub('infoView', student);
-		};
+		}
 		
-		function deleteExtraInfo () {
-			
+		function deleteExtraInfo () {	
 			saveButton.removeEventListener('click', changeData)
 			closeButton.removeEventListener('click', deleteExtraInfo)
 			editDiv.parentNode.innerHTML='';
 		}
+		
+		return editDiv;
 	};
 	
 	

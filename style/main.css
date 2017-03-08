@@ -20,3 +20,14 @@ body {
 	display: inline-block;
 	vertical-align: top;	
 }
+
+.like{
+	background: red;
+}
+
+#country{
+	margin-top:70px;
+}
+
+
+

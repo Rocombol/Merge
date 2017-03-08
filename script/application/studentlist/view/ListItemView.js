@@ -9,7 +9,7 @@ function ListItemView (_student) {
         var itemData = '',
             json = student.toJSON();
 		
-		itemData += renderTemplate(listItemTpl, json);		
+		itemData += renderTemplate(listItemTpl, json) ;		
 		itemTr.innerHTML = itemData;			      
 		
 		queryListeners();				

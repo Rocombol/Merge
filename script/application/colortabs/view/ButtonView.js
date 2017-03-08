@@ -5,7 +5,6 @@ function ButtonView (counter) {
 		containerElement = document.createElement('div');
 
     this.render = function () {
-        //var containerElement = document.createElement('div'),
 		var	colors = counter.toJSON(),
             htmlString = '',
             colorTitle = Object.keys(colors),
@@ -20,7 +19,6 @@ function ButtonView (counter) {
         containerElement.innerHTML = htmlString;
 
         colorTitle.forEach(function(color){
-
             inputCollection = containerElement.querySelector('input[value="' + color + '"]');
             changeColorCounter = function () {
                     counter.increaseCount(color);

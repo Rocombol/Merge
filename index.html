@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Student List and ColorTabs</title>
+    <title>Applications</title>
     
     <link rel="stylesheet" href="style/colortab/colorBoxView.css">
     <link rel="stylesheet" href="style/colortab/colorMain.css">
@@ -12,10 +12,14 @@
     <link rel="stylesheet" href="style/studentlist/listTplStyle.css">
     <link rel="stylesheet" href="style/studentlist/editTplStyle.css">
     
+    <link rel="stylesheet" href="style/countries/countryItemTplStyle.css">
+    <link rel="stylesheet" href="style/countries/countryTplStyle.css">      
+      
     <link rel="stylesheet" href="style/main.css">
     
     <script src="script/libs/observer.js"></script>
     <script src="script/libs/mediator.js"></script>
+    <script src="script/libs/renderTemplate.js"></script>
     
     <script src="script/application/studentlist/templates/editViewTpl.js"></script>
     <script src="script/application/studentlist/templates/infoViewTpl.js"></script>
@@ -26,13 +30,18 @@
     <script src="script/application/colortabs/templates/counterViewTpl.js"></script> 
     <script src="script/application/colortabs/templates/colorViewTpl.js"></script>   
               
-    <script src="script/application/studentlist/templates/renderTemplate.js"></script>
-             
+    <script src="script/application/countries/templates/countryItemTpl.js"></script>
+    <script src="script/application/countries/templates/countryButtonTpl.js"></script>
+    <script src="script/application/countries/templates/countryTpl.js"></script>     
+                       
 	<script src="script/application/studentlist/model/Student.js"></script>
     <script src="script/application/studentlist/model/StudentsList.js"></script>
         
     <script src="script/application/colortabs/model/Counter.js"></script>
-               
+                
+    <script src="script/application/countries/model/Country.js"></script>
+    <script src="script/application/countries/model/CountryList.js"></script>                 
+                
     <script src="script/application/studentlist/ControllerStudent.js"></script>    
     <script src="script/application/studentlist/view/InfoView.js"></script>    
     <script src="script/application/studentlist/view/ListItemView.js"></script>
@@ -42,8 +51,12 @@
     <script src="script/application/colortabs/ControllerColor.js"></script>
     <script src="script/application/colortabs/view/ColorView.js"></script>
     <script src="script/application/colortabs/view/ButtonView.js"></script>  
-    <script src="script/application/colortabs/view/CounterView.js"></script>   
-        
+    <script src="script/application/colortabs/view/CounterView.js"></script>
+    
+    <script src="script/application/countries/ControllerCountries.js"></script>    
+    <script src="script/application/countries/view/CountryItemView.js"></script>
+    <script src="script/application/countries/view/CountryListView.js"></script>             
+
     <script src="script/main.js"></script>
 </head>
 	<body>
@@ -55,6 +68,7 @@
 			<div id="button"></div>
 			<div id="colorarea"></div>
 			<div id="counterarea"></div>	
-		</div>		
+		</div>
+		<div id="country"></div>		
 	</body>
 </html>

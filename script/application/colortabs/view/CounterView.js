@@ -16,13 +16,11 @@ function CounterView (counter) {
 
             html += counterViewTpl.replace(/:color/g, color)
                     .replace(':counterClick', counterClick);
-
         }      
-			       
+
     containerElement.innerHTML = html;
     
 	return containerElement;
-		
 	};
 
 	

@@ -19,7 +19,5 @@ function ControllerColor() {
 		
 		colorContainer.appendChild(colorViewRender);
 	
-	
-	
 	return this;
 };
