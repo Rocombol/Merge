@@ -25,20 +25,7 @@ function Country (country, area, population, continent, earth) {
 		item.parentNode.remove(item.children)
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
     return this;
-
 }
 
  

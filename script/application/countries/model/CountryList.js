@@ -22,21 +22,17 @@ function CountryList () {
 				vietnam = new Country("Vietnam", "332,698", "92,700,000", "asia", "earth");
 				
 				
-        this.countryCollection = [ukraine, usa, france, china, canada, singapore, zambia,
+        var countryCollection = [ukraine, usa, france, china, canada, singapore, zambia,
 		egypt, argentina, prc, kenya, spain, japan, vietnam, mexico, germany, estonia,southkorea, ireland];
 	    
-	    this.forEach = function (country) {
-			this.countryCollection.forEach(country);		  
-		}
-
 		this.removeCountry = function (country){
-			var deletIndex = this.countryCollection.indexOf(country);			
-			this.countryCollection.splice(deletIndex,1);
+			var deletIndex = countryCollection.indexOf(country);			
+			countryCollection.splice(deletIndex,1);
 		}
 		
 		this.getCountriesByContinent = function (continent){			
 			
-			var countriesByContinent = this.countryCollection.filter(function(itemCountry){
+			var countriesByContinent = countryCollection.filter(function(itemCountry){
 				if (continent=='earth'){
 					return itemCountry.get('earth')==continent;	
 				}else{
