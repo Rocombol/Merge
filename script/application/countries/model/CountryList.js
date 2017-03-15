@@ -1,7 +1,22 @@
 'use strict';
 function CountryList () {
-	
-		var ukraine = new Country("Ukraine", "603,700", "45,238,805", "europe", "earth"),
+			
+       var countryCollection = getCountryArray();
+	   			
+		this.removeCountry = function (country){
+			var deletIndex = countryCollection.indexOf(country);			
+			countryCollection.splice(deletIndex,1);
+		}
+		
+		this.getCountriesByContinent = function (continent){							
+			var countriesByContinent = countryCollection.filter(function(itemCountry){
+				return itemCountry.isOwnContinent(continent);	
+			});
+			return countriesByContinent;
+		}		
+		
+		function getCountryArray (){
+				var ukraine = new Country("Ukraine", "603,700", "45,238,805", "europe", "earth"),
         		usa = new Country("Usa", '9,826,630', "320,050,716", "america", "earth"),
         		france = new Country("France", '643,427', "64,291,280", "europe", "earth"),
         		china = new Country("China", '9,596,960', "1,385,566,537", "asia", "earth"),
@@ -19,28 +34,13 @@ function CountryList () {
 				southkorea = new Country("South korea", "100,210", "50,801,405", "asia", "earth"),
 				singapore = new Country("Singapore", "719", "5,610,000", "asia", "earth"),
 				prc = new Country("People's Republic of China", "35,581", "23 140 000", "asia", "earth"),
-				vietnam = new Country("Vietnam", "332,698", "92,700,000", "asia", "earth");
-				
-				
-        var countryCollection = [ukraine, usa, france, china, canada, singapore, zambia,
-		egypt, argentina, prc, kenya, spain, japan, vietnam, mexico, germany, estonia,southkorea, ireland];
-	    
-		this.removeCountry = function (country){
-			var deletIndex = countryCollection.indexOf(country);			
-			countryCollection.splice(deletIndex,1);
+				vietnam = new Country("Vietnam", "332,698", "92,700,000", "asia", "earth");	
+			var countryArray = 	[ukraine, usa, france, china, canada, singapore, zambia,
+				egypt, argentina, prc, kenya, spain, japan, vietnam, mexico, germany, estonia,southkorea, ireland];
+			return countryArray;
 		}
-		
-		this.getCountriesByContinent = function (continent){			
-			
-			var countriesByContinent = countryCollection.filter(function(itemCountry){
-				if (continent=='earth'){
-					return itemCountry.get('earth')==continent;	
-				}else{
-					return itemCountry.get('continent')==continent;	
-				}
-			});
 
-			return countriesByContinent;
-		}		
+
+		
 	return this;
 }

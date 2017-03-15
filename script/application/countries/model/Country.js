@@ -1,31 +1,42 @@
 'use strict';
 
-function Country (country, area, population, continent, earth) {
-    var values = {
-        country: country,
-		area: area,
-        population: population,
-        continent: continent,
-		earth: earth 
-    };
-	
-    this.toJSON = function () {
-        return values;
-    };
-				
-    this.get = function (key) {
-        return values[key];
-    };
-	
-	this.like = function (item){
+var Country = (function(){
+	function Country (country, area, population, continent, earth) {
+		var values = {
+			country: country,
+			area: area,
+			population: population,
+			continent: continent,
+			earth: earth 
+		};
+		
+		this.toJSON = function () {
+			return values;
+		};
+					
+		this.get = function (key) {
+			return values[key];
+		};
+	}
+	function _like (item){
 		item.parentNode.classList.add('like');				
 	}
-	
-	this.dislike = function (item){
+		
+	function _dislike (item){
 		item.parentNode.remove(item.children)
 	}
-	
-    return this;
-}
-
- 
+		
+	function _isOwnContinent (continent){
+		if(continent=='earth'){
+			return	this.get('earth') == continent;
+		}
+			return this.get('continent') == continent;		
+	}
+		
+	Country.prototype.isOwnContinent = _isOwnContinent;
+	Country.prototype.like = _like;
+	Country.prototype.dislike = _dislike;
+		
+	return Country;
+		
+})();
