@@ -1,27 +1,25 @@
 'use strict';
 
 function ControllerStudent () {
-	var studentContainer = document.querySelector('#content'),
-		infoContainer = document.querySelector('#extraInfo'),
-		editContainer = document.querySelector('#extraInfo'),	
-	 	infoView = new InfoView(),
-		editView = new EditView(),
-		studentsList = new StudentsList(),
-    	studentListView = new StudentListView(studentsList),
-		studentListViewRender = studentListView.render();	
+	var $studentContainer = $('#content'),
+		$addContainer = $('#extraInfo'),
+    	studentListView = new StudentListView();
 		  
-	studentContainer.appendChild(studentListViewRender);
+	$studentContainer.append(studentListView.render().el);
 			
-	mediator.sub('infoView', function (_student){
-		infoContainer.innerHTML='';
-		var info = infoView.render(_student);
-		infoContainer.appendChild(info)
+	mediator.sub('infoView', function (student){
+		var infoView = new InfoView({model:student});
+			
+		$addContainer.html('');
+		$addContainer.append(infoView.render().el);
 	});	
 	
-	mediator.sub('editView', function (_student){
-		editContainer.innerHTML='';		
-		var edit = editView.render(_student);
-		editContainer.appendChild(edit);
+	mediator.sub('editView', function (student){
+		var editView = new EditView({model:student});
+			
+		$addContainer.html('');
+		
+		$addContainer.append(editView.render().el);
 	});	
 	
 	return this;

@@ -1,5 +1,4 @@
-var editViewTpl = `
-		<h2>Edit Data</h2>
+var editViewTpl = `<h2>Edit Data</h2>
         <label>
             <h3>Name:</h3>
             <input type="text" name="name">
@@ -26,5 +25,4 @@ var editViewTpl = `
         </label>
 		<div>
 			<button class='saveInfo'>Save</button>
-			<button class='closeEdit'>Cancel</button>
-		</div>`;
+			<button class='closeEdit'>Cancel</button>`;

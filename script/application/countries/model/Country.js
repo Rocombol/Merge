@@ -17,6 +17,8 @@ var Country = (function(){
 		this.get = function (key) {
 			return values[key];
 		};
+		
+		return this;
 	}
 	function _like (item){
 		item.parentNode.classList.add('like');				

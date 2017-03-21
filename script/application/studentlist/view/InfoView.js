@@ -1,29 +1,21 @@
 'use strict';
-
-function InfoView () {
-var infoDiv = document.createElement('div'),
-	closeButton;
+var InfoView = Backbone.View.extend({
+	tagName: 'ul',
+	className:'addInfo',
+	
+	template: _.template(infoViewTpl),
+	
+	events:{
+		'click .closeInfo':'closeInfo'
+	},
+	
+	render: function(){
+		this.$el.html(this.template(this.model.toJSON()));
 		
-	this.render = function (_student) {
-		
-		var student = _student,
-			json = student.toJSON(), 		
-        	html = '';
-		
-        html += renderTemplate(infoViewTpl, json);
-        infoDiv.innerHTML = html;
-        closeButton = infoDiv.querySelector('.closeInfo');
-				
-		closeButton.addEventListener('click', this.closeInfo, false);
-
-		return infoDiv;
-	}
-		
-	this.closeInfo = function () {
-		
-		closeButton.removeEventListener('click', this.closeInfo);
-		infoDiv.parentNode.innerHTML='';
-	};
-		
-    return this;
-}
+		return this;
+	},
+	
+	closeInfo: function(){
+		this.$el.remove();
+	}	
+})

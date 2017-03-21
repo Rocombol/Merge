@@ -2,9 +2,9 @@
 
 var mediator = new Mediator();
 
-document.addEventListener('DOMContentLoaded', function () {
+$( function () {
 	var controllerStudent = new ControllerStudent();
     var controllerColor = new ControllerColor();
 	var controllerCountries = new ControllerCountries();
 	
-}, false);
+});
