@@ -1,14 +1,11 @@
 'use strict';
 
 function ControllerCountries () {
-	var container = document.querySelector('#country'),
-		countryList = new CountryList(),
-    	countryListView = new CountryListView(countryList),
-		countryListViewRender;
+	var $container = $('#country'),
+    	countryListView = new CountryListView();
 		
 	mediator.sub('CountryListView', function (continent){
-		countryListViewRender = countryListView.render(continent);
-		container.appendChild(countryListViewRender);
+		$container.append(countryListView.render(continent).el);
 	});
 	
 	mediator.pub('CountryListView', 'earth');

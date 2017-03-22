@@ -1,53 +1,93 @@
 'use strict';
+var CountryList = Backbone.Collection.extend({
 
-var CountryList = (function (){
+	model: Country,
 	
-	function CountryList () {
-      this.countryCollection = getCountryArray();
+	initialize: function (){
+	    this.add({
+			country:'Ukraine' ,
+			area: '603,700',
+			population: '45,238,805',
+			continent: 'europe',
+			earth: 'earth' 
+		});		
+		this.add({
+			country:'USA' ,
+			area: '9,826,630',
+			population: '320,050,716',
+			continent: 'america',
+			earth: 'earth' 
+		});	
+		this.add({
+			country:'Japan' ,
+			area: '145,882',
+			population: '126,475,664',
+			continent: 'asia',
+			earth: 'earth' 
+		});	
 
-		function getCountryArray (){
-				var ukraine = new Country("Ukraine", "603,700", "45,238,805", "europe", "earth"),
-					usa = new Country("Usa", '9,826,630', "320,050,716", "america", "earth"),
-					france = new Country("France", '643,427', "64,291,280", "europe", "earth"),
-					china = new Country("China", '9,596,960', "1,385,566,537", "asia", "earth"),
-					canada = new Country("Canada", "9,984,670", "35,181,704", "america", "earth"),
-					zambia = new Country("Zambia", "752,614", "14,538,640", "africa", "earth"),
-					egypt = new Country("Egypt", "1,001,450", "82,056,378", "africa", "earth"),
-					argentina = new Country("Argentina", "2,780,400", "43,132,000", "america", "earth"),
-					kenya = new Country("Kenya", "582,650", "39,002,772", "africa", "earth"), 
-					spain = new Country("Spain", "504,782", "45,061,274", "europe", "earth"),
-					japan = new Country("Japan", "145,882", "126,475,664", "asia", "earth"),
-					mexico = new Country("Mexico", "1,972,550", "121,006,000", "america", "earth"),
-					germany = new Country("Germany", "357,021", "83,251,851", "europe", "earth"),
-					ireland = new Country("Ireland", "84,421", "6,378,000", "europe", "earth"),
-					estonia = new Country("Estonia", "45,339", "1,317,797", "europe", "earth"),
-					southkorea = new Country("South korea", "100,210", "50,801,405", "asia", "earth"),
-					singapore = new Country("Singapore", "719", "5,610,000", "asia", "earth"),
-					prc = new Country("People's Republic of China", "35,581", "23 140 000", "asia", "earth"),
-					vietnam = new Country("Vietnam", "332,698", "92,700,000", "asia", "earth");	
-				var countryArray = [ukraine, usa, france, china, canada, singapore, zambia,
-					egypt, argentina, prc, kenya, spain, japan, vietnam, mexico, germany, estonia,southkorea, ireland];
-				return countryArray;
-		}	   	   
-		return this;
-	}
+		this.add({
+			country:'France' ,
+			area: '643,427',
+			population: '64,291,280',
+			continent: 'europe',
+			earth: 'earth' 
+		});	
+
+		this.add({
+			country:'China' ,
+			area: '9,596,960',
+			population: '1,385,566,537',
+			continent: 'asia',
+			earth: 'earth' 
+		});	
+
+		this.add({
+			country:'Canada' ,
+			area: '9,984,670',
+			population: '35,181,704',
+			continent: 'america',
+			earth: 'earth' 
+		});	
+
+		this.add({
+			country:'Zambia' ,
+			area: '752,614',
+			population: '14,538,640',
+			continent: 'africa',
+			earth: 'earth' 
+		});	
+
+		this.add({
+			country:'Egypt' ,
+			area: '603,700',
+			population: '1,001,450',
+			continent: 'africa',
+			earth: 'earth' 
+		});	
+
+		this.add({
+			country:'Ireland' ,
+			area: '84,421',
+			population: '6,378,000',
+			continent: 'europe',
+			earth: 'earth' 
+		});	
+	},
 	
-	function _removeCountry (country){
-			var deletIndex = this.countryCollection.indexOf(country);			
-			this.countryCollection.splice(deletIndex,1);		
-	}
-	
-	function _getCountriesByContinent(continent){
-			var countriesByContinent = this.countryCollection.filter(function(itemCountry){
+	removeCountry: function(country){		
+			this.remove(country);		
+	},
+
+	getCountriesByContinent: function (continent){
+			var countriesByContinent = this.filter(function(itemCountry){
 				return itemCountry.isOwnContinent(continent);	
 			});
-			return countriesByContinent;		
+			return countriesByContinent;	
+			
 	}
-	
-	CountryList.prototype.removeCountry = _removeCountry;
-	CountryList.prototype.getCountriesByContinent = _getCountriesByContinent;
-	
-	
-	
-	return CountryList;
-})();
+
+}); 
+
+
+
