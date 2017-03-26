@@ -1,22 +1,18 @@
 'use strict';
 
-function ColorView (counter) {
-	var counter = counter,
-		colorBoxContainer = document.createElement('div');
-	
-    this.render = function (color) {
-    
-        var html = colorViewTpl.replace(':color', color);
-            
-        colorBoxContainer.classList.add('colorDiv');
-		
-		colorBoxContainer.innerHTML = html;
-		
-		return colorBoxContainer;
-    };
+var ColorView = Backbone.View.extend({
+	tagName:'div',
+	className:'colorDiv',
 
-  counter.on('change', this.render);
+    initialize: function () {
+        this.model.on('change', this.render, this);
+    },
+	
+	render: function (color){
+	var html = colorViewTpl.replace(':color', color);
+	this.$el.html(html);
 	
 	return this;
-}
+	}
+})
 

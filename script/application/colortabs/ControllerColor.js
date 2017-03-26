@@ -2,22 +2,19 @@
 
 function ControllerColor() {
 
-	var buttonContainer = document.querySelector('#button'),
-		colorContainer = document.querySelector('#colorarea'),
-		counterContainer = document.querySelector('#counterarea'),	
+	var $buttonContainer = $('#button'),
+		$colorContainer = $('#colorarea'),
+		$counterContainer = $('#counterarea'),	
 		counter = new Counter(),
-    	colorView = new ColorView(counter),
-    	counterView = new CounterView(counter),
-    	buttonView = new ButtonView(counter),
-		buttonViewRender = buttonView.render(),
-		counterViewRender = counterView.render(),
-	    colorViewRender = colorView.render();
-			
-		buttonContainer.appendChild(buttonViewRender);
-	
-		counterContainer.appendChild(counterViewRender);
+    	colorView = new ColorView({model:counter}),
+    	counterView = new CounterView({model:counter}),
+    	buttonView = new ButtonView({model:counter});
 		
-		colorContainer.appendChild(colorViewRender);
+		$buttonContainer.append(buttonView.render().el);
+	
+		$counterContainer.append(counterView.render().el);
+		
+		$colorContainer.append(colorView.render().el);
 	
 	return this;
 };

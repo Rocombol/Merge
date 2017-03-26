@@ -1,30 +1,18 @@
 'use strict';
-
-function Counter () {
-    var counters = {
+var Counter = Backbone.Model.extend({
+	defaults:{
         blue: 0,
         red: 0,
-        green: 0      	
-    };
-
-    this.toJSON = function () {
-        var json = {},
-            color;
-
-        for (color in counters) {
-            json[color] = counters[color];
-        }
-
-        return json;
-    };
-
-	this.increaseCount = function (color) {
-        counters[color]++;
-        this.trigger('change', color);
-    };
+        green: 0  		
+	},
 	
-	return this;
-}
+	increaseCount: function (color) {
+		this.set(color, this.get(color)+1);
+		this.trigger('change', color);
+	}	
+});
 
-Counter.prototype = new Observer();
-Counter.prototype.constructor = Counter;
+
+
+
+

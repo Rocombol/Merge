@@ -1,31 +1,47 @@
 'use strict';
+var CounterView = Backbone.View.extend({
+	
+	tagName:'div',
 
-function CounterView (counter) {
-    var counter = counter,
-	    containerElement = document.createElement('div');
-		
-
-    this.render = function () {
-   		var clickNumbers = counter.toJSON(),
-            html = '',
-            color, 
-            counterClick;
-        
-        for (color in clickNumbers) {
+	initialize: function () {
+          this.model.on('change', this.render, this);
+    },
+	
+	render: function () {
+		var clickNumbers = this.model.toJSON(),
+			html = '',
+		    color, 
+           counterClick;		
+		for (color in clickNumbers) {
             counterClick = clickNumbers[color];
 
-            html += counterViewTpl.replace(/:color/g, color)
-                    .replace(':counterClick', counterClick);
-        }      
+        html += counterViewTpl.replace(/:color/g, color)
+                .replace(':counterClick', counterClick);
+		}  				
+		this.$el.html(html);		
+		return this;		
+	}		
+});
 
-    containerElement.innerHTML = html;
-    
-	return containerElement;
-	};
 
-	
-    counter.on('change', this.render);
-	
-	return this;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

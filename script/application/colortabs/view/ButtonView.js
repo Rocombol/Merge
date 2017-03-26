@@ -1,34 +1,42 @@
 'use strict';
-
-function ButtonView (counter) {
-    var counter = counter,
-		containerElement = document.createElement('div');
-
-    this.render = function () {
-		var	colors = counter.toJSON(),
-            htmlString = '',
-            colorTitle = Object.keys(colors),
-            changeColorCounter,
-            inputCollection, 
-            color;
-
+var ButtonView = Backbone.View.extend({
+	
+	tagName:'div',
+	
+	render: function () {
+		var colorTitle = Object.keys(this.model.toJSON()),
+			htmlString='',
+			changeColorCounter,
+			inputCollection,
+			model = this.model;
+		
         colorTitle.forEach(function(color){
             htmlString += inputTpl.replace(/:color/g, color); 
-        });  
-
-        containerElement.innerHTML = htmlString;
-
+        }, this);  		
+				
+		this.$el.html(htmlString);
+		
         colorTitle.forEach(function(color){
-            inputCollection = containerElement.querySelector('input[value="' + color + '"]');
+            inputCollection = this.$el.find('input[value="' + color + '"]');
             changeColorCounter = function () {
-                    counter.increaseCount(color);
+                     model.increaseCount(color);
                 };			
-            inputCollection.addEventListener('click', changeColorCounter, false); 
-        });
+            inputCollection.click(changeColorCounter); 
+
+        }, this);		
 		
-	return containerElement;	
-		
-	};
-	
-	return this;
-}
+		return this;
+	}	
+});
+
+
+
+
+
+
+
+
+
+
+
+
