@@ -3,7 +3,11 @@ var CountryList = Backbone.Collection.extend({
 
 	model: Country,
 	
-	initialize: function (){
+	initialize: function () {
+		this.fetch();
+	},	
+	
+	/*initialize: function (){
 	    this.add({
 			country:'Ukraine' ,
 			area: '603,700',
@@ -73,7 +77,9 @@ var CountryList = Backbone.Collection.extend({
 			continent: 'europe',
 			earth: 'earth' 
 		});	
-	},
+	},*/
+	
+	url:'/countries',
 	
 	removeCountry: function(country){		
 			this.remove(country);		
@@ -83,8 +89,7 @@ var CountryList = Backbone.Collection.extend({
 			var countriesByContinent = this.filter(function(itemCountry){
 				return itemCountry.isOwnContinent(continent);	
 			});
-			return countriesByContinent;	
-			
+			return countriesByContinent;			
 	}
 
 }); 

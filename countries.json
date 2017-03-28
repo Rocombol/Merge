@@ -1,0 +1,64 @@
+[{
+    "id": "0",
+	"country":"Ukraine" ,
+	"area": "603,700",
+	"population": "45,238,805",
+	"continent": "europe",
+	"earth": "earth" 
+}, {
+    "id": "1",
+	"country":"USA" ,
+	"area": "9,826,630",
+	"population": "320,050,716",
+	"continent": "america",
+	"earth": "earth" 
+}, {
+    "id": "2",
+	"country":"Japan" ,
+	"area": "145,882",
+	"population": "126,475,664",
+	"continent": "asia",
+	"earth": "earth" 
+}, {
+    "id": "3",
+	"country":"France" ,
+	"area": "643,427",
+	"population": "64,291,280",
+	"continent": "europe",
+	"earth": "earth" 
+}, {
+    "id": "4",
+	"country":"China" ,
+	"area": "9,596,960",
+	"population": "1,385,566,537",
+	"continent": "asia",
+	"earth": "earth" 
+}, {
+    "id": "5",
+	"country":"Canada" ,
+	"area": "9,984,670",
+	"population": "35,181,704",
+	"continent": "america",
+	"earth": "earth" 
+},{
+	"id": "6",
+	"country":"Zambia" ,
+	"area": "752,614",
+	"population": "14,538,640",
+	"continent": "africa",
+	"earth": "earth" 
+},{
+	 "id": "7",
+	"country":"Egypt" ,
+	"area": "603,700",
+	"population": "1,001,450",
+	"continent": "africa",
+	"earth": "earth" 
+},{
+	 "id": "8",
+	"country":"Ireland" ,
+	"area": "84,421",
+	"population": "6,378,000",
+	"continent": "europe",
+	"earth": "earth" 
+}]

@@ -5,7 +5,7 @@ var editViewTpl = `<h2>Edit Data</h2>
         </label>
         <label>
             <h3>LastName:</h3>
-            <input type="text" name="lastName">
+            <input type="text" name="lastname">
         </label>
         <label>
             <h3>Gender:</h3>

@@ -9,7 +9,8 @@ var InfoView = Backbone.View.extend({
 		'click .closeInfo':'closeInfo'
 	},
 	
-	render: function(){
+	render: function(){		
+		this.model.save();
 		this.$el.html(this.template(this.model.toJSON()));
 		
 		return this;
