@@ -19,6 +19,7 @@
 	            response.write(error + "\n");
 	            response.end();
 	        } else {
+				response.writeHead(200, {});
 	            response.write(file.toString(), function() {
 	                response.end();
 	            });

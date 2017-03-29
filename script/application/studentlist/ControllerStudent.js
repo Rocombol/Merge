@@ -6,7 +6,7 @@ function ControllerStudent () {
     	studentListView = new StudentListView();
 		  
 	$studentContainer.append(studentListView.render().el);
-			
+				
 	mediator.sub('infoView', function (student){
 		var infoView = new InfoView({model:student});
 			
