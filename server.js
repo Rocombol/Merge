@@ -52,7 +52,7 @@
 	        });
 
 	        request.on('end', function() {
-	                var foo = JSON.parse(body),
+	                var bodyPost = JSON.parse(body),
 	                    studentsList = JSON.parse(studentsString),
 	                 	pathname = url.parse(request.url).pathname.split('/'),
 	    				id = pathname[pathname.length-1];
@@ -60,7 +60,7 @@
 	    				studentsJSON.forEach(function(itemStudent, index){	
 
 						if (itemStudent.id===id){
-							studentsJSON.splice(index,1, foo);
+							studentsJSON.splice(index,1, bodyPost);
 						}
 	    		});
 	                studentsString = JSON.stringify(studentsJSON);
