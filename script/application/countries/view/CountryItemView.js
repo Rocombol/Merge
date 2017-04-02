@@ -29,6 +29,7 @@ var CountryItemView = Backbone.View.extend({
 		deleteRow: function(){			
 			this.$el.remove();
 			this.collection.removeCountry(this.model);
+			this.model.destroy();
 		}		
 });
 

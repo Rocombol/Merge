@@ -29,6 +29,7 @@ var EditView = Backbone.View.extend({
 		},this);
 
 		this.closeInfo();
+		this.model.save();
 		mediator.pub('infoView', this.model);
 
 	}

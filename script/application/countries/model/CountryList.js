@@ -3,14 +3,11 @@ var CountryList = Backbone.Collection.extend({
 
 	model: Country,
 	
-	/*initialize: function () {
-		this.fetch();
-	},*/	
-	
 	url:'/countries',
 	
 	removeCountry: function(country){		
-			this.remove(country);		
+			this.remove(country);
+			//this.model.destoy();		
 	},
 
 	getCountriesByContinent: function (continent){

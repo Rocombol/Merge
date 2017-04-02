@@ -10,9 +10,9 @@ var InfoView = Backbone.View.extend({
 	},
 	
 	render: function(){		
-		this.model.save();
+		//this.model.save();
 		this.$el.html(this.template(this.model.toJSON()));
-		
+			
 		return this;
 	},
 	

@@ -8,6 +8,8 @@ var Country = Backbone.Model.extend({
 			earth: 'earth' 		
 		},
 
+		urlRoot:'/countries',
+
 		like: function(item){
 			item.parentNode.classList.add('like');				
 		},

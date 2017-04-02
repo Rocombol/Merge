@@ -22,7 +22,7 @@ var CountryListView = Backbone.View.extend({
 			 
 		var sortedList = this.collection.getCountriesByContinent(continent);	 
 						
-			sortedList.forEach(this.renderOnce, this);	
+		sortedList.forEach(this.renderOnce, this);	
 
 		return this;
 	},
