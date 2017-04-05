@@ -9,6 +9,8 @@ var Student = Backbone.Model.extend({
         phone: '',
         email: ''
     },
+
+    urlRoot:'/students'
 });
 
 

@@ -28,7 +28,7 @@ var CountryListView = Backbone.View.extend({
 	},
 
 	renderOnce: function (country){	
-		
+				
 		var counrtyItemView = new CountryItemView({
 				model: country,
 				collection:this.collection

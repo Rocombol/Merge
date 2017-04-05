@@ -4,6 +4,10 @@ var editViewTpl = `<h2>Edit Data</h2>
             <input type="text" name="name" value="<%= name %>">
         </label>
         <label>
+            <h3>id:</h3>
+            <input type="text" name="id" value="">
+        </label>
+        <label>
             <h3>LastName:</h3>
             <input type="text" name="lastname" value="<%= lastname %>">
         </label>

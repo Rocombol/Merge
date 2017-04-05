@@ -4,7 +4,8 @@
 	    countriesJSON = require('./countries'),
 	    studentsJSON = require('./students'),
 		studentsString = JSON.stringify(studentsJSON),
-	 	countriesJSONString = JSON.stringify(countriesJSON);
+	 	countriesJSONString = JSON.stringify(countriesJSON),
+	 	number;
 
 	function otherRequest (uri) {
 	    var res = true;
@@ -38,13 +39,32 @@
 	        '/countries': countries
 	    };
 
-	    function students() {
+	    function students () {
 	        response.writeHead(200, { "Content-Type": "application/json" });
 	        response.write(studentsString);
 	        response.end();	       
 	    }
 
 	    if (request.method == 'PUT') {
+	    		requestPost();
+	     }
+
+
+	    function countries () {
+	        response.writeHead(200, { "Content-Type": "application/json" });
+	        response.write(countriesJSONString);
+	        response.end();	  
+	    }
+
+	    if (request.method == 'DELETE') {
+	    	  requestDelete();
+	     }
+
+	    if (handlers[request.url]) {
+	        handlers[request.url]();
+	    }
+
+        function requestPost () {
 	        var body = '';
 
 	        request.on('data', function(data) {
@@ -54,40 +74,42 @@
 	        request.on('end', function() {
 	                var bodyPost = JSON.parse(body),
 	                    studentsList = JSON.parse(studentsString),
-	                 	pathname = url.parse(request.url).pathname.split('/'),
+	    			    pathname = url.parse(request.url).pathname.split('/'),
 	    				id = pathname[pathname.length-1];
-	    				 
+
 	    				studentsJSON.forEach(function(itemStudent, index){	
+							if (itemStudent.id===id){
+								number = index; 
+								studentsJSON.splice(number,1, bodyPost);
+							}
+							if (id>6){
+								studentsJSON.push(bodyPost);
+							}
+	    				});
 
-						if (itemStudent.id===id){
-							studentsJSON.splice(index,1, bodyPost);
-						}
-	    		});
+	    				//studentsJSON.push(bodyPost);
+
+	    				//studentsJSON.splice(number,1, bodyPost);
+
 	                studentsString = JSON.stringify(studentsJSON);
-	        });
-	     }
+	        });	
+        }
 
-	    function countries () {
-	        response.writeHead(200, { "Content-Type": "application/json" });
-	        response.write(countriesJSONString);
-	        response.end();	  
-	    }
-
-	    if (request.method == 'DELETE') {
+        function requestDelete () {
 	    	var pathname = url.parse(request.url).pathname.split('/'),
 	    		id = pathname[pathname.length-1];
 
-	    		 countriesJSON.forEach(function(itemCountry, index){	
-						if (itemCountry.id===id){
-							countriesJSON.splice(index,1);
-						}
-	    		});
-	    		countriesJSONString = JSON.stringify(countriesJSON);
-	     }
+			 countriesJSON.forEach(function(itemCountry, index){	
+					if (itemCountry.id===id){
+						number = index; 	
+					}
+			});
+			 countriesJSON.splice(number, 1);
 
-	    if (handlers[request.url]) {
-	        handlers[request.url]();
-	    }
+			countriesJSONString = JSON.stringify(countriesJSON);	
+        }
+
+
 	}
 
 	http.createServer(function(request, response) {
