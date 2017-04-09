@@ -22,28 +22,34 @@ var EditView = Backbone.View.extend({
 
     changeData: function() {
 
+        var newData = {},
+            prop;
+
         _.each(this.$('input'), function(input){
-            if(this.model.get(input.name) !== input.value) {
-                this.model.save(input.name, input.value);
-            }				
+            prop = input.name;           
+            newData[prop] = input.value;				
 		},this);
 
-       /* _.each(this.$('input'), function(input) {
-            if (this.model.get(input.name) !== input.value) {
-                this.model.set(input.name, input.value);
-                //$.post('/students', this.model.toJSON());
+        /* pessimistic way of adding model
+        this.model.save(editData, {success:function (model, response, options){
+            this.collection.add(model);
+        }.bind(this)});*/
 
-               /* $.ajax({
-                  type: "PUT",
-                  url: "/students",
-                  data: this.model.toJSON(),
-                  contentType: "application/json; charset=utf-8"
-                });
-            }
-        }, this);
-*/
+    // optimistic way of adding model
+        if (this.model.isNew()){
+            this.collection.add(this.model)
+            this.model.save(newData);
+            this.closeInfo();
+        } else {
+
+        this.model.save(newData);
+        
         this.closeInfo();
-        mediator.pub('infoView', this.model);
+
+        mediator.pub('infoView', this.model);    
+        
+        }
+
 
     }
 })

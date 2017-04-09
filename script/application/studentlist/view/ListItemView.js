@@ -10,14 +10,14 @@ var ListItemView = Backbone.View.extend({
 
 	events:{
 		'click .showInfo': 'findMore',
-		'click .editInfo': 'editInfo'
+		'click .editInfo': 'editInfo',
+		'click .addStudent': 'addStudent'
 	},
 	
 	render: function(){
 		
 		this.$el.html(this.template(this.model.toJSON()));
-		//this.model.save();
-		
+	
 		return this;
 	},
 	
@@ -27,6 +27,11 @@ var ListItemView = Backbone.View.extend({
 	
 	editInfo:  function (){
 		mediator.pub('editView', this.model);							
+	},	
+
+	addStudent:  function (){
+		var newStudent = new Student();
+		mediator.pub('editView', newStudent);						
 	}
 });
 

@@ -3,8 +3,7 @@
 	    url = require("url"),
 	    countriesJSON = require('./countries'),
 	    studentsJSON = require('./students'),
-		studentsString = JSON.stringify(studentsJSON),
-	 	countriesJSONString = JSON.stringify(countriesJSON),
+
 	 	number;
 
 	function otherRequest (uri) {
@@ -34,81 +33,126 @@
 	}
 
 	function route (request, response) {
-	    var handlers = {
-	        '/students': students,
-	        '/countries': countries
-	    };
 
-	    function students () {
-	        response.writeHead(200, { "Content-Type": "application/json" });
-	        response.write(studentsString);
-	        response.end();	       
+        var pathname = url.parse(request.url).pathname,
+            path = pathname.split('/'),
+            collection = path[1],
+            id = path[path.length-1];
+
+
+        if (collection === 'students') {
+			if (request.method === 'POST') {
+                var body = '';
+
+				request.on('data', function(data) {
+					body += data;					
+				});
+
+				request.on('end', function() {
+					var studentJSON = JSON.parse(body);
+                    var studentPost = addStudent(studentJSON);	
+                
+					response.writeHead(200, {'Content-Type': 'application/json'});
+					response.write(JSON.stringify(studentPost));
+					response.end();				
+				});			
+		    }
+			
+			if (request.method === 'PUT') {
+                var body = '';
+
+				request.on('data', function(data) {
+					body += data;					
+				});
+
+				request.on('end', function() {
+
+
+                    var student = editData(id, body);	
+                
+					response.writeHead(200, {'Content-Type': 'application/json'});
+					response.write(student);
+					response.end();
+          				
+				});
+                
+		    }
+			
+		    if (request.method === 'GET') {			
+                response.writeHead(200, {'Content-Type': 'application/json'});
+                response.write(students());
+                response.end();
+            }
+		}
+
+		if(collection === 'countries'){
+
+			if(request.method === 'GET') {
+
+                response.writeHead(200, {'Content-Type': 'application/json'});
+                response.write(countries());
+                response.end();
+			}			
+
+
+			if(request.method === 'DELETE') {
+
+                response.writeHead(200, {'Content-Type': 'application/json'});
+                response.write(deleteCountry());
+                response.end();
+			}
+
+		}
+
+	    function deleteCountry () {
+
+	        countriesJSON.forEach(function(itemCountry, index){	
+	       		if (itemCountry.id===id){
+	       			number = index; 	
+	       		}
+	       });
+
+	        countriesJSON.splice(number, 1);
+
+	        return JSON.stringify(countriesJSON);
+	    
 	    }
 
-	    if (request.method == 'PUT') {
-	    		requestPost();
-	     }
+	    function students () {  
+	       var studentsString = JSON.stringify(studentsJSON);
 
-
+	       return studentsString;
+	    }
+	    
 	    function countries () {
-	        response.writeHead(200, { "Content-Type": "application/json" });
-	        response.write(countriesJSONString);
-	        response.end();	  
+			var countriesJSONString = JSON.stringify(countriesJSON);
+
+			return countriesJSONString;
 	    }
 
-	    if (request.method == 'DELETE') {
-	    	  requestDelete();
-	     }
 
-	    if (handlers[request.url]) {
-	        handlers[request.url]();
+	    function addStudent (student) {
+	    	var studentId = studentsJSON.length + 1;
+	    	student.id = studentId;
+	    	studentsJSON.push(student);                          
+	    	return student;
 	    }
 
-        function requestPost () {
-	        var body = '';
 
-	        request.on('data', function(data) {
-	                body += data;
-	        });
+  		function editData (id, data) {
+			var studentData = JSON.parse(data),
+				number;
 
-	        request.on('end', function() {
-	                var bodyPost = JSON.parse(body),
-	                    studentsList = JSON.parse(studentsString),
-	    			    pathname = url.parse(request.url).pathname.split('/'),
-	    				id = pathname[pathname.length-1];
-
-	    				studentsJSON.forEach(function(itemStudent, index){	
-							if (itemStudent.id===id){
-								number = index; 
-								studentsJSON.splice(number,1, bodyPost);
-							}
-							if (id>6){
-								studentsJSON.push(bodyPost);
-							}
-	    				});
-
-	    				//studentsJSON.push(bodyPost);
-
-	    				//studentsJSON.splice(number,1, bodyPost);
-
-	                studentsString = JSON.stringify(studentsJSON);
-	        });	
-        }
-
-        function requestDelete () {
-	    	var pathname = url.parse(request.url).pathname.split('/'),
-	    		id = pathname[pathname.length-1];
-
-			 countriesJSON.forEach(function(itemCountry, index){	
-					if (itemCountry.id===id){
-						number = index; 	
-					}
+			studentsJSON.forEach(function(itemStudent, index){					
+				if (itemStudent.id === id){
+						number = index; 
+				}
 			});
-			 countriesJSON.splice(number, 1);
 
-			countriesJSONString = JSON.stringify(countriesJSON);	
-        }
-
+			studentsJSON.splice(number, 1, studentData);				  			
+	    	
+	    	return JSON.stringify(studentData);
+	    }
 
 	}
 

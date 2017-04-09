@@ -4,17 +4,10 @@ function ControllerStudent () {
 	var $studentContainer = $('#content'),
 		$addContainer = $('#extraInfo'),
 		$addStudent = $('.addStudent'),
-    	studentListView = new StudentListView();
+		studentsList = new StudentsList(),
+    	studentListView = new StudentListView({collection:studentsList});
 		  
 	$studentContainer.append(studentListView.render().el);
-
-	$addStudent.click(addNewStudent);
-
-	function addNewStudent () {
-		var newStudent = new Student();
-
-		mediator.pub('editView', newStudent);
-	}
 
 	mediator.sub('infoView', function (student){
 		var infoView = new InfoView({model:student});
@@ -24,7 +17,10 @@ function ControllerStudent () {
 	});	
 	
 	mediator.sub('editView', function (student){
-		var editView = new EditView({model:student});
+		var editView = new EditView({
+			model:student,
+			collection:studentsList	
+		});
 			
 		$addContainer.html('');
 		

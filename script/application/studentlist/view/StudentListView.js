@@ -2,7 +2,7 @@
 
 var StudentListView = Backbone.View.extend({
 	
-	collection: new StudentsList(),
+	//collection: new StudentsList(),
 	
 	initialize: function () {
 		this.collection.fetch();
